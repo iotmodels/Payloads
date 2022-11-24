@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <RootNamespace>Payloads</RootNamespace>
+  </PropertyGroup>
+	<ItemGroup>
+		<Using Include="System.Text" />
+		<Using Include="System.Text.Json" />
+		<Using Include="Payloads" />
+		<Using Include="Payloads.Json" />
+	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Apache.Avro" Version="1.11.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.21.9" />
+    <PackageReference Include="Grpc.Tools" Version="2.50.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="*.proto" GrpcServices="None" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Protobuf Include="Proto\Telemetries.proto" />
+	</ItemGroup>
+</Project>
