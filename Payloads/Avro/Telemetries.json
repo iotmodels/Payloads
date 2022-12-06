@@ -1,12 +1,8 @@
 {
-  "name": "Telemetries",
-  "namespace":  "Payloads.Avro",
   "type": "record",
+  "namespace":  "Payloads.Avro",
+  "name": "Telemetries",
   "fields": [
-    {
-      "name": "temperature",
-      "type": "double"
-    },
     {
       "name": "WorkingSet",
       "type": "double"

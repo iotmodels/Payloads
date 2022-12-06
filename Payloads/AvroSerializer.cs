@@ -1,6 +1,5 @@
 ﻿using Avro.IO;
 using Avro.Specific;
-using Avro;
 
 internal class AvroSerializer : PayloadBinarySerializer
 {
@@ -12,8 +11,7 @@ internal class AvroSerializer : PayloadBinarySerializer
         using MemoryStream mem = new(bytes);
         BinaryDecoder decoder = new(mem);
         SpecificDefaultReader reader = new(_schema, _schema);
-        T val = default!;
-        reader.Read(val, decoder);
+        T val = reader.Read<T>(default!, decoder);
         return val;
     }
 
@@ -23,7 +21,6 @@ internal class AvroSerializer : PayloadBinarySerializer
         BinaryEncoder encoder = new(ms);
         SpecificDefaultWriter writer = new(_schema);
         writer.Write(payload, encoder);
-        ms.Position = 0;
         byte[] bytes = ms.ToArray();
         return bytes;
     }

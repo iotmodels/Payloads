@@ -1,0 +1,2 @@
+dotnet tool install apache.avro.tools
+avrogen -s .\Telemetries.json . --namespace Payloads.Avro:Payloads.Avro --skip-directories

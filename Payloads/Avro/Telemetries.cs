@@ -17,25 +17,13 @@ namespace Payloads.Avro
 	public partial class Telemetries : global::Avro.Specific.ISpecificRecord
 	{
 		public static global::Avro.Schema _SCHEMA = global::Avro.Schema.Parse("{\"type\":\"record\",\"name\":\"Telemetries\",\"namespace\":\"Payloads.Avro\",\"fields\":[{\"nam" +
-				"e\":\"temperature\",\"type\":\"double\"},{\"name\":\"WorkingSet\",\"type\":\"double\"}]}");
-		private double _temperature;
+				"e\":\"WorkingSet\",\"type\":\"double\"}]}");
 		private double _WorkingSet;
 		public virtual global::Avro.Schema Schema
 		{
 			get
 			{
 				return Telemetries._SCHEMA;
-			}
-		}
-		public double temperature
-		{
-			get
-			{
-				return this._temperature;
-			}
-			set
-			{
-				this._temperature = value;
 			}
 		}
 		public double WorkingSet
@@ -53,8 +41,7 @@ namespace Payloads.Avro
 		{
 			switch (fieldPos)
 			{
-			case 0: return this.temperature;
-			case 1: return this.WorkingSet;
+			case 0: return this.WorkingSet;
 			default: throw new global::Avro.AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -62,8 +49,7 @@ namespace Payloads.Avro
 		{
 			switch (fieldPos)
 			{
-			case 0: this.temperature = (System.Double)fieldValue; break;
-			case 1: this.WorkingSet = (System.Double)fieldValue; break;
+			case 0: this.WorkingSet = (System.Double)fieldValue; break;
 			default: throw new global::Avro.AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}
