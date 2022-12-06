@@ -11,17 +11,14 @@ internal class AvroSerializer : PayloadBinarySerializer
         using MemoryStream mem = new(bytes);
         BinaryDecoder decoder = new(mem);
         SpecificDefaultReader reader = new(_schema, _schema);
-        T val = reader.Read<T>(default!, decoder);
-        return val;
+        return reader.Read<T>(default!, decoder);
     }
 
     public override byte[] ToBytes<T>(T payload)
     {
         using MemoryStream ms = new();
-        BinaryEncoder encoder = new(ms);
         SpecificDefaultWriter writer = new(_schema);
-        writer.Write(payload, encoder);
-        byte[] bytes = ms.ToArray();
-        return bytes;
+        writer.Write(payload, new BinaryEncoder(ms));
+        return ms.ToArray();
     }
 }
