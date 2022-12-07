@@ -12,13 +12,13 @@ Console.WriteLine(jsonTel.WorkingSet);
 Console.WriteLine();
 
 //Proto
-var t = new Telemetries { WorkingSet = ws };
-PayloadBinarySerializer protoSerializer = new ProtobufSerializer(Telemetries.Parser);
+var t = new Payloads.Proto.Telemetries { WorkingSet = ws };
+PayloadBinarySerializer protoSerializer = new ProtobufSerializer(Payloads.Proto.Telemetries.Parser);
 var ptotoBytes = protoSerializer.ToBytes(t);
 Console.WriteLine($"{ptotoBytes.Length} proto bytes: ");
 ptotoBytes.ToList().ForEach(x => Console.Write($"0x{x} "));
 Console.WriteLine(  );
-t = protoSerializer.FromBytes<Telemetries>(ptotoBytes);
+t = protoSerializer.FromBytes<Payloads.Proto.Telemetries>(ptotoBytes);
 Console.WriteLine(t.WorkingSet);
 Console.WriteLine();
 
