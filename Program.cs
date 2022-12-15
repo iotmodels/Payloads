@@ -11,6 +11,17 @@ var jsonTel = jsonSerializer.FromBytes<Payloads.Json.Telemetries>(jsonBytes);
 Console.WriteLine(jsonTel.WorkingSet);
 Console.WriteLine();
 
+//Cbor
+var telemetries = new Payloads.Json.Telemetries() { WorkingSet = ws };
+PayloadBinarySerializer cborSerializer = new CborSerializer();
+var cborBytes = cborSerializer.ToBytes(telemetries);
+Console.WriteLine($"{cborBytes.Length} Cbor bytes: ");
+cborBytes.ToList().ForEach(x => Console.Write($"0x{x} "));
+Console.WriteLine();
+telemetries = cborSerializer.FromBytes<Payloads.Json.Telemetries>(cborBytes);
+Console.WriteLine(telemetries.WorkingSet);
+Console.WriteLine();
+
 //Proto
 var t = new Payloads.Proto.Telemetries { WorkingSet = ws };
 PayloadBinarySerializer protoSerializer = new ProtobufSerializer(Payloads.Proto.Telemetries.Parser);
@@ -31,3 +42,4 @@ avroBytes.ToList().ForEach(x => Console.Write($"0x{x} "));
 Console.WriteLine();
 avro = avroSerializer.FromBytes<Payloads.Avro.Telemetries>(avroBytes);
 Console.WriteLine(avro.WorkingSet);
+
