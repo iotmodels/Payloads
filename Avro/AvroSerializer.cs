@@ -1,6 +1,7 @@
 ﻿using Avro.IO;
 using Avro.Specific;
 
+
 internal class AvroSerializer : PayloadBinarySerializer
 {
     private readonly Avro.Schema _schema;

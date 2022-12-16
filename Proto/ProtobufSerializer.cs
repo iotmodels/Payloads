@@ -1,4 +1,5 @@
-﻿using Google.Protobuf;
+﻿
+using Google.Protobuf;
 
 public class ProtobufSerializer : PayloadBinarySerializer
 {
