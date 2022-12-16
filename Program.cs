@@ -7,11 +7,11 @@ Run(new ProtobufSerializer(Payloads.Proto.Telemetries.Parser), new Payloads.Prot
 var inAvro = new Payloads.Avro.Telemetries() { WorkingSet = ws };
 Run(new AvroSerializer(inAvro.Schema), inAvro);
 
-T Run<T>(PayloadBinarySerializer serializer, T payload)
+static T Run<T>(PayloadBinarySerializer serializer, T payload)
 {
     Console.WriteLine(serializer.GetType().Name);
     var bytes = serializer.ToBytes(payload);
-    Console.WriteLine($"{bytes.Length} bytes: ");
+    Console.Write($"{bytes.Length} bytes: ");
     bytes.ToList().ForEach(x => Console.Write($"0x{x} "));
     Console.WriteLine();
     Console.WriteLine();
